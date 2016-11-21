@@ -3,6 +3,7 @@ package matthew.farias.bot;
 import matthew.farias.bot.Commands.*;
 import matthew.farias.bot.util.CommandParser;
 import matthew.farias.bot.util.MattoBot;
+import net.dv8tion.d4j.player.MusicPlayer;
 import net.dv8tion.jda.JDA;
 import net.dv8tion.jda.JDABuilder;
 import net.dv8tion.jda.events.message.MessageReceivedEvent;
@@ -47,6 +48,9 @@ public class Main {
         commands.put("volume", new VolumeCommand());
         commands.put("help", new HelpCommand());
         commands.put("servers", new ServersCommand());
+        commands.put("rank", new RankCommand());
+        //MusicPlayer jack = new MusicPlayer();
+
 
 
     }
