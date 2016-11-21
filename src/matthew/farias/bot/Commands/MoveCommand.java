@@ -18,6 +18,7 @@ public class MoveCommand implements Command{
     public boolean called(String[] args, MessageReceivedEvent event) {
         if(args.length<2) return false;
         if(event.getMessage().getMentionedUsers().size()<1) return false;
+        if(!PermissionUtil.checkPermission(event.getAuthor(),Permission.VOICE_MOVE_OTHERS,event.getGuild())) return false;
         if(!PermissionUtil.checkPermission(event.getJDA().getSelfInfo(), Permission.VOICE_MOVE_OTHERS,event.getGuild())) return false;
 
         boolean chanExists = false;

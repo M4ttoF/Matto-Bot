@@ -8,7 +8,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 import static matthew.farias.bot.Commands.SongCommand.player;
+import static matthew.farias.bot.Main.jda;
 import static matthew.farias.bot.Main.manager;
+import static matthew.farias.bot.Main.volume;
 
 /**
  * Created by Matto on 2016-11-17.
@@ -27,17 +29,19 @@ public class PlaylistCommand implements Command{
         }
         try {
             player=new FilePlayer(playList.get(0));
+            manager.setSendingHandler(player);
             player.play();
+            player.setVolume(volume);
             playList.remove(0);
             while(!playList.isEmpty()){
-                if(!player.isPlaying()  ){
-                    FilePlayer filePlayer = new FilePlayer(playList.get(0));
-                    player=filePlayer;
+                if(!player.isPlaying()){
+                    player=new FilePlayer(playList.get(0));;
                     manager.setSendingHandler(player);
                     player.play();
+                    player.setVolume(volume);
                     playList.remove(0);
-                    event.getTextChannel().sendMessage("FLAG");
                 }
+                Thread.sleep(10000);
             }
         }
         catch (Exception e){

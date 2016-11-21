@@ -23,10 +23,13 @@ public class Main {
 
     public static AudioManager manager;
 
+    public static float volume=0.5f;
+
     public static void main(String[]args){
         try{
             jda = new JDABuilder().addListener(new BotListener()).setBotToken(MattoBot.DISCORD_TOKEN).buildBlocking();
             jda.setAutoReconnect(true);
+            jda.getAccountManager().setGame("with itself");
         } catch(Exception e){
             e.printStackTrace();
         }
@@ -42,6 +45,8 @@ public class Main {
         commands.put("playlist", new PlaylistCommand());
         commands.put("playing", new PlayingCommand());
         commands.put("volume", new VolumeCommand());
+        commands.put("help", new HelpCommand());
+        commands.put("servers", new ServersCommand());
 
 
     }

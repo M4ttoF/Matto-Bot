@@ -14,6 +14,7 @@ import java.net.URL;
 
 import static matthew.farias.bot.Main.jda;
 import static matthew.farias.bot.Main.manager;
+import static matthew.farias.bot.Main.volume;
 
 /**
  * Created by Matto on 2016-11-16.
@@ -42,6 +43,7 @@ public class SongCommand implements Command{
             player=filePlayer;
             manager.setSendingHandler(player);
             player.play();
+            player.setVolume(volume);
 
 
 
